@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Tuition Assistance"
+author: "Xiaolin Sima, Yanni Chen, Yi Lu"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
