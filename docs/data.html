@@ -23,7 +23,7 @@
 <meta name="author" content="Xiaolin Sima, Yanni Chen, Yi Lu" />
 
 
-<meta name="date" content="2022-10-31" />
+<meta name="date" content="2022-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -72,7 +72,11 @@
 <li><a href="./">TuitionAssist</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i><b>1.1</b> Background</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#question"><i class="fa fa-check"></i><b>1.2</b> Question</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="proposal.html"><a href="proposal.html"><i class="fa fa-check"></i><b>2</b> Proposal</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="proposal.html"><a href="proposal.html#research-topic"><i class="fa fa-check"></i><b>2.1</b> Research topic</a></li>
@@ -80,7 +84,12 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a></li>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data.html"><a href="data.html#data-background"><i class="fa fa-check"></i><b>3.1.1</b> Data Background</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data.html"><a href="data.html#data-description"><i class="fa fa-check"></i><b>3.1.2</b> Data Description</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data.html"><a href="data.html#data-issue"><i class="fa fa-check"></i><b>3.1.3</b> Data Issue</a></li>
+</ul></li>
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
 </ul></li>
@@ -110,12 +119,86 @@
 <h1><span class="header-section-number">Chapter 3</span> Data<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="sources" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Sources<a href="data.html#sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-background" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Data Background<a href="data.html#data-background" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataset that we used is from NY Open Data, provided by the New York State Higher Education Services Corporation. The original source can be found here: <a href="https://data.ny.gov/Education/Tuition-Assistance-Program-TAP-Recipients-Dollars-/2t78-bs45">Tuition Assistance Program Dataset</a></p>
+<p>Information contained in this dataset was extracted from the systems that process student application and school certification data collected by academic year, TAP College Code, school sector, and Federal School Code to facilitate matching with US Department of Education administered loan and grant program data. It is updated every November, coinciding with the publication of the HESC Annual Report.</p>
+</div>
+<div id="data-description" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Data Description<a href="data.html#data-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In terms of contents, this dataset provides insights about TAP award recipients by education level, sector of institution, age, income, and more in a time range of 20 academic years, from 2000 to 2020. Specifically, the raw data contains 236,475 observations with 16 variables, with details provided below:</p>
+<p><code>Academic Year</code>: Academic Year is from July 1 through June 30.</p>
+<p><code>Level</code>: U = Undergraduate G = Graduate.</p>
+<p><code>TAP Level of Study</code>: Student’s Level of Study: 2 yr Undergrad = Undergraduate 2 Year Program of Study 4 yr Undergrad = Undergraduate 4 Year Program of Study 5 yr Undergrad = Approved Undergraduate 5 Year Program of Study STAP = Supplemental Tuition Assistance Program (authorized additional aid for remedial courses) Grad = Graduate Level Program of Study.</p>
+<p><code>Sector Type</code>: Type of Institution is either Public or Private.</p>
+<p><code>TAP Sector Group</code>: Sector Group of Institution: 1-CUNY SR = CUNY Senior Colleges 2-CUNY CC = CUNY Community Colleges 3-SUNY SO = SUNY State Operated 4-SUNY CC = SUNY Community Colleges 5-INDEPENDENT = Independent Colleges 6-BUS. DEGREE = Business Degree Granting Institutions 7-BUS. NON-DEG = Non-Degree Business Schools 8-OTHER = All Other Institutions 9-CHAPTER XXII = Chapter XXII TAP Schools.</p>
+<p><code>Recipient Age Group</code>: Age of student as of July 1 start of academic year.</p>
+<p><code>TAP Financial Status</code>: Financial Status is either Financial_Dependent or Financial_Independent.</p>
+<p><code>TAP Award Schedule</code>: There are 3 awards schedules: Dependent Schedule, Independent Schedule, or Married No Dependents Schedule.</p>
+<p><code>TAP Degree or NonDegree</code>: Degree = Program of study is classified as degree granting Non Degree = Program of study is classified as non degree.</p>
+<p><code>TAP Schedule Letter</code>: Refer to Tuition Assistance Program award schedule documentation. The link is provided in the Additional Resources section after selecting the About tab.</p>
+<p><code>Income by $1,000 Range</code>: When performing data analysis, one of three income ranges can be selected. The $1,000 income range is the lowest level of granularity that is available in this dataset.</p>
+<p><code>Income by $5,000 Range</code>: When performing data analysis, one of three income ranges can be selected. The $5,000 income range is the middle level of granularity that is available in this dataset.</p>
+<p><code>Income by $10,000 Range</code>: When performing data analysis, one of three income ranges can be selected. The $10,000 income range is the highest level of granularity that is available in this dataset.</p>
+<p><code>TAP Recipient Headcount</code>: Number of recipients as measured by students receiving at least one term award during the academic year.</p>
+<p><code>TAP Recipient FTEs</code>: Number of recipients as measured by academic year Full-Time Equivalents: Full Time Equivalent is a unit that indicates the enrollment of a student in credit-bearing courses in a way that makes it comparable across contexts. An FTE of 1.0 means that the person is equivalent to 1 full-time student, while an FTE of 0.5 signals that a student is enrolled half-time.</p>
+<p><code>TAP Recipient Dollars</code>: Total TAP award dollars provided on behalf of TAP recipients attending an Institution.</p>
+</div>
+<div id="data-issue" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Data Issue<a href="data.html#data-issue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From the descriptions of the 16 variables above, we can see that there are plenty of information regarding the background of an applicant. We also noticed that the TAP Recipient Dollars variable is the Total TAP award dollars, so we need to create two more columns to calculated the average TAP Recipient Dollars based on Recipient Headcount and Recipient FTEs. More details included in the following section.</p>
+</div>
 </div>
 <div id="cleaning-transformation" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since the data is available in CSV format, we downloaded it and opened it directly in R. The dataset is correctly formatted, without corrupted or duplicate data. An overview of the dataset before cleaning and transforming is shown below.</p>
+<pre><code>## &#39;data.frame&#39;:    236475 obs. of  16 variables:
+##  $ Academic.Year           : int  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...
+##  $ Level                   : chr  &quot;U&quot; &quot;U&quot; &quot;U&quot; &quot;U&quot; ...
+##  $ TAP.Level.of.Study      : chr  &quot;4 yr Undergrad&quot; &quot;2 yr Undergrad&quot; &quot;4 yr Undergrad&quot; &quot;2 yr Undergrad&quot; ...
+##  $ Sector.Type             : chr  &quot;PRIVATE&quot; &quot;PRIVATE&quot; &quot;PUBLIC&quot; &quot;PRIVATE&quot; ...
+##  $ TAP.Sector.Group        : chr  &quot;5-INDEPENDENT&quot; &quot;6-BUS. DEGREE&quot; &quot;3-SUNY SO&quot; &quot;6-BUS. DEGREE&quot; ...
+##  $ Recipient.Age.Group     : chr  &quot;under age 22&quot; &quot;age 26 - 35&quot; &quot;under age 22&quot; &quot;age 22 - 25&quot; ...
+##  $ TAP.Financial.Status    : chr  &quot;Financial_Dependent&quot; &quot;Financial_Independent&quot; &quot;Financial_Independent&quot; &quot;Financial_Independent&quot; ...
+##  $ TAP.Award.Schedule      : chr  &quot;Dependent_Schedule&quot; &quot;Dependent_Schedule&quot; &quot;Married_No_Dependents&quot; &quot;Dependent_Schedule&quot; ...
+##  $ TAP.Degree.or.NonDegree : chr  &quot;Degree&quot; &quot;Degree&quot; &quot;Degree&quot; &quot;Degree&quot; ...
+##  $ TAP.Schedule.Letter     : chr  &quot;E&quot; &quot;E&quot; &quot;C&quot; &quot;E&quot; ...
+##  $ Income.by..1.000.Range  : chr  &quot;$26,001 to $27,000&quot; &quot;$40,001 to $41,000&quot; &quot;$ 8,001 to $ 9,000&quot; &quot;$52,001 to $53,000&quot; ...
+##  $ Income.by..5.000.Range  : chr  &quot;$25,001 to $30,000&quot; &quot;$40,001 to $45,000&quot; &quot;$ 5,001 to $10,000&quot; &quot;$50,001 to $55,000&quot; ...
+##  $ Income.by..10.000.Range : chr  &quot;$20,001 to $30,000&quot; &quot;$40,001 to $50,000&quot; &quot;$     0 to $10,000&quot; &quot;$50,001 to $60,000&quot; ...
+##  $ TAP.Recipient..Headcount: int  3 5 1 1 3 1 691 6 1 2 ...
+##  $ TAP.Recipient.FTEs      : num  2.037 4.654 1.019 0.517 1.556 ...
+##  $ TAP.Recipient.Dollars   : num  6416 5764 2863 259 778 ...</code></pre>
+<p>However, we can see that the original dataset only includes the Total TAP award dollars, we needed to transform it into two separate columns indicating the average TAP Recipient Dollars based on Recipient Headcount and Recipient FTEs. An FTE of 1.0 means that the person is equivalent to 1 full-time student. Therefore, the recipient dollars per FTEs provides a standard view of the award for a full-time student.</p>
+<p>Specifically:</p>
+<p><code>Recipient_Dollars_Per_Student</code> = <code>Recipient_Dollars</code>/<code>Recipient_Headcount</code></p>
+<p><code>Recipient_Dollars_Per_Stu_FTEs</code> = <code>Recipient_Dollars</code>/<code>Recipient_FTEs</code></p>
+<p>Finally, we convert character variables to factor variables for further analysis. With the columns renamed and rearranged, the dataset is in a good shape for visualization and analysis. An overview of the dataset after transforming is shown below.</p>
+<pre><code>## &#39;data.frame&#39;:    236458 obs. of  18 variables:
+##  $ Academic_Year                 : int  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...
+##  $ Level                         : Factor w/ 2 levels &quot;G&quot;,&quot;U&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ Level_of_Study                : Factor w/ 5 levels &quot;2 yr Undergrad&quot;,..: 2 1 2 1 1 1 2 1 2 1 ...
+##  $ Sector_Type                   : Factor w/ 2 levels &quot;PRIVATE&quot;,&quot;PUBLIC&quot;: 1 1 2 1 2 1 1 1 2 1 ...
+##  $ Sector_Group                  : Factor w/ 9 levels &quot;1-CUNY SR&quot;,&quot;2-CUNY CC&quot;,..: 5 6 3 6 1 6 5 7 4 7 ...
+##  $ Recipient_Age                 : Factor w/ 5 levels &quot;age 22 - 25&quot;,..: 5 2 5 1 5 2 5 3 1 1 ...
+##  $ Financial_Status              : Factor w/ 2 levels &quot;Financial_Dependent&quot;,..: 1 2 2 2 1 2 1 2 1 2 ...
+##  $ Award_Schedule                : Factor w/ 3 levels &quot;Dependent_Schedule&quot;,..: 1 1 3 1 1 1 1 1 1 1 ...
+##  $ Degree_or_NonDegree           : Factor w/ 2 levels &quot;Degree&quot;,&quot;Non_Degree&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Schedule_Letter               : Factor w/ 13 levels &quot;A&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,..: 4 4 2 4 4 4 4 4 4 4 ...
+##  $ Income_Range_by_1000          : Factor w/ 81 levels &quot;$     1 to $ 1,000&quot;,..: 28 42 9 54 78 70 6 2 69 15 ...
+##  $ Income_Range_by_5000          : Factor w/ 17 levels &quot;$     1 to $ 5,000&quot;,..: 7 10 2 12 17 15 2 1 15 4 ...
+##  $ Income_Range_by_10000         : Factor w/ 8 levels &quot;$     0 to $10,000&quot;,..: 3 5 1 6 8 7 1 1 7 2 ...
+##  $ Recipient_Headcount           : int  3 5 1 1 3 1 691 6 1 2 ...
+##  $ Recipient_FTEs                : num  2.037 4.654 1.019 0.517 1.556 ...
+##  $ Recipient_Dollars             : num  6416 5764 2863 259 778 ...
+##  $ Recipient_Dollars_Per_Student : num  2139 1153 2863 259 259 ...
+##  $ Recipient_Dollars_Per_Stu_FTEs: num  3150 1239 2810 500 500 ...</code></pre>
 </div>
 <div id="missing-value-analysis" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An Aggregated Missing Patterns Plot is plotted to check for missing values. For visualization purposes, the column names are renamed to <code>X1</code>, <code>X2</code>,…,<code>X16</code>, where <code>X15</code> represents <code>TAP Recipient FTEs</code>.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>There are only 15 rows that have TAP Level of Study labeled as “Unknown” (which are not considered missing value) and 2 rows that have missing values for TAP Recipient FTEs. Since the number of these incomplete rows is comparatively small to the whole dataset, we simply removed those rows.</p>
 
 </div>
 </div>
