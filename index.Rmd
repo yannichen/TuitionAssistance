@@ -7,3 +7,15 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+## Background
+
+New York is known for high living costs, and tuition is just one of them. According to IPEDS (Integrated Postsecondary Education Data System), for academic year 2021-2022, the average undergraduate tuition & fees for New York Colleges is $9,302 for in-state students and $20,087 for out-of-state students, which is higher than the national average, $6,673 for in-state and $17,800 for out-of-state. Not all families can afford to pay for their tuitions. In order to support those families, state organizations such as the Higher Education Service Corporation was created to centrally administer student financial aid programs, and the Tuition Assistance Program (TAP) is one of them.
+
+Since TAP is New York's largest student financial aid grant program, we focus solely on this program to get a general picture of how New York State distributes its financial aid. Through exploratory data analysis and visualization, we have a better understanding to the distribution of TAP financial aid to New York State residents categorized by different characteristic groups in different years. We believe our findings can help a potential financial aid applicant have a better expectation on how much he or she can get based on their own backgrounds, so that more residents with economic difficulties can have confidence in pursing a higher education.
+
+## Question
+
+1. How does the Tuition Assistance Program (TAP) distribute its financial aid? For example, does being in a specific level of study, sector group, or income range result in receiving more financial aid than others?
+
+2. Does Covid-19 affect the distribution pattern or distributed amount of the TAP financial aid?
+
