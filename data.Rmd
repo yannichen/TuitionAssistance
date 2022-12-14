@@ -1,8 +1,135 @@
+
+```{r, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(redav)
+```
+
 # Data 
+```{r, include=FALSE}
+data = read.csv("data.csv")
+```
 
 ## Sources
 
+### Data Background
+
+The dataset that we used is from NY Open Data, provided by the New York State Higher Education Services Corporation. The original source can be found here: [Tuition Assistance Program Dataset](https://data.ny.gov/Education/Tuition-Assistance-Program-TAP-Recipients-Dollars-/2t78-bs45)
+
+Information contained in this dataset was extracted from the systems that process student application and school certification data collected by academic year, TAP College Code, school sector, and Federal School Code to facilitate matching with US Department of Education administered loan and grant program data. It is updated every November, coinciding with the publication of the HESC Annual Report.
+
+### Data Description
+
+In terms of contents, this dataset provides insights about TAP award recipients by education level, sector of institution, age, income, and more in a time range of 20 academic years, from 2000 to 2020. Specifically, the raw data contains 236,475 observations with 16 variables, with details provided below:
+
+`Academic Year`: Academic Year is from July 1 through June 30. 
+
+`Level`: U = Undergraduate G = Graduate.
+
+`TAP Level of Study`: Student’s Level of Study: 2 yr Undergrad = Undergraduate 2 Year Program of Study 4 yr Undergrad = Undergraduate 4 Year Program of Study 5 yr Undergrad = Approved Undergraduate 5 Year Program of Study STAP = Supplemental Tuition Assistance Program (authorized additional aid for remedial courses) Grad = Graduate Level Program of Study.
+
+`Sector Type`: Type of Institution is either Public or Private.
+
+`TAP Sector Group`: Sector Group of Institution: 1-CUNY SR = CUNY Senior Colleges 2-CUNY CC = CUNY Community Colleges 3-SUNY SO = SUNY State Operated 4-SUNY CC = SUNY Community Colleges 5-INDEPENDENT = Independent Colleges 6-BUS. DEGREE = Business Degree Granting Institutions 7-BUS. NON-DEG = Non-Degree Business Schools 8-OTHER = All Other Institutions 9-CHAPTER XXII = Chapter XXII TAP Schools.
+
+`Recipient Age Group`: Age of student as of July 1 start of academic year.
+
+`TAP Financial Status`: Financial Status is either Financial_Dependent or Financial_Independent.
+
+`TAP Award Schedule`: There are 3 awards schedules: Dependent Schedule, Independent Schedule, or Married No Dependents Schedule.
+
+`TAP Degree or NonDegree`: Degree = Program of study is classified as degree granting Non Degree = Program of study is classified as non degree.
+
+`TAP Schedule Letter`: Refer to Tuition Assistance Program award schedule documentation. The link is provided in the Additional Resources section after selecting the About tab.
+
+`Income by $1,000 Range`: When performing data analysis, one of three income ranges can be selected. The $1,000 income range is the lowest level of granularity that is available in this dataset.
+
+`Income by $5,000 Range`: When performing data analysis, one of three income ranges can be selected. The $5,000 income range is the middle level of granularity that is available in this dataset.
+
+`Income by $10,000 Range`: When performing data analysis, one of three income ranges can be selected. The $10,000 income range is the highest level of granularity that is available in this dataset.
+
+`TAP Recipient Headcount`: Number of recipients as measured by students receiving at least one term award during the academic year.
+
+`TAP Recipient FTEs`:	Number of recipients as measured by academic year Full-Time Equivalents: Full Time Equivalent is a unit that indicates the enrollment of a student in credit-bearing courses in a way that makes it comparable across contexts. An FTE of 1.0 means that the person is equivalent to 1 full-time student, while an FTE of 0.5 signals that a student is enrolled half-time.
+
+`TAP Recipient Dollars`: Total TAP award dollars provided on behalf of TAP recipients attending an Institution.
+
+### Data Issue
+
+From the descriptions of the 16 variables above, we can see that there are plenty of information regarding the background of an applicant. We also noticed that the TAP Recipient Dollars variable is the Total TAP award dollars, so we need to create two more columns to calculated the average TAP Recipient Dollars based on Recipient Headcount and Recipient FTEs. More details included in the following section.
+
 ## Cleaning / transformation
+
+Since the data is available in CSV format, we downloaded it and opened it directly in R. The dataset is correctly formatted, without corrupted or duplicate data. An overview of the dataset before cleaning and transforming is shown below.
+
+```{r, echo=FALSE}
+str(data)
+```
+
+However, we can see that the original dataset only includes the Total TAP award dollars, we needed to transform it into two separate columns indicating the average TAP Recipient Dollars based on Recipient Headcount and Recipient FTEs. An FTE of 1.0 means that the person is equivalent to 1 full-time student. Therefore, the recipient dollars per FTEs provides a standard view of the award for a full-time student. 
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, include=FALSE}
+df <- data %>% 
+  rename(
+    "Academic_Year" = "Academic.Year",
+    "Level_of_Study" = "TAP.Level.of.Study",
+    "Sector_Type" = "Sector.Type",
+    "Sector_Group" = "TAP.Sector.Group",
+    "Recipient_Age" = "Recipient.Age.Group",
+    "Financial_Status" = "TAP.Financial.Status",
+    "Award_Schedule" = "TAP.Award.Schedule",
+    "Degree_or_NonDegree" = "TAP.Degree.or.NonDegree",
+    "Schedule_Letter" = "TAP.Schedule.Letter",
+    "Income_Range_by_1000" = "Income.by..1.000.Range",
+    "Income_Range_by_5000" = "Income.by..5.000.Range",
+    "Income_Range_by_10000" = "Income.by..10.000.Range",
+    "Recipient_Headcount" = "TAP.Recipient..Headcount",
+    "Recipient_FTEs" = "TAP.Recipient.FTEs",
+    "Recipient_Dollars" = "TAP.Recipient.Dollars"
+  ) %>% 
+  filter(Level_of_Study != "Unknown" & !is.na(Recipient_FTEs)) %>%
+  mutate(Recipient_Dollars_Per_Student = Recipient_Dollars / Recipient_Headcount,
+         Recipient_Dollars_Per_Stu_FTEs = Recipient_Dollars / Recipient_FTEs)
+
+df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], as.factor)
+```
+
+Specifically:
+
+`Recipient_Dollars_Per_Student` = `Recipient_Dollars`/`Recipient_Headcount`
+
+`Recipient_Dollars_Per_Stu_FTEs` = `Recipient_Dollars`/`Recipient_FTEs`
+
+Finally, we convert character variables to factor variables for further analysis. With the columns renamed and rearranged, the dataset is in a good shape for visualization and analysis. An overview of the dataset after transforming is shown below.
+
+```{r, echo=FALSE}
+str(df)
+```
+
 
 ## Missing value analysis
 
+An Aggregated Missing Patterns Plot is plotted to check for missing values. For visualization purposes, the column names are renamed to `X1`, `X2`,...,`X16`, where `X15` represents `TAP Recipient FTEs`.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+temp = data %>% 
+  rename("X1" = "Academic.Year",
+         "X2" = "Level",
+         "X3" = "TAP.Level.of.Study",
+         "X4" = "Sector.Type",
+         "X5" = "TAP.Sector.Group",
+         "X6" = "Recipient.Age.Group",
+         "X7" = "TAP.Financial.Status",
+         "X8" = "TAP.Award.Schedule",
+         "X9" = "TAP.Degree.or.NonDegree",
+         "X10" = "TAP.Schedule.Letter",
+         "X11" = "Income.by..1.000.Range",
+         "X12" = "Income.by..5.000.Range",
+         "X13" = "Income.by..10.000.Range",
+         "X14" = "TAP.Recipient..Headcount",
+         "X15" = "TAP.Recipient.FTEs",
+         "X16" = "TAP.Recipient.Dollars") 
+plot_missing(temp)
+```
+
+There are only 15 rows that have TAP Level of Study labeled as “Unknown” (which are not considered missing value) and 2 rows that have missing values for TAP Recipient FTEs. Since the number of these incomplete rows is comparatively small to the whole dataset, we simply removed those rows.
