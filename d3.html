@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>TAP Amount Each Year Visualization</title>
+  </head>
+  <body>
+  <div>
+    <button type="button" onclick="add()">Add bar: <br> Want more history?</button>
+  </div>
+    
+  <div>
+    <svg width="600" height="400"></svg>
+  </div>
+  <div>
+    <button type="button" onclick="remove()">Remove bar: <br> Enough history? </button>
+  </div>
+   
+
+  <script>
+  
+      var svg = d3.select('svg');
+      var w = 600;
+      var h = 400;
+      var margin = {
+        left: 100,
+        right: 15,
+        top: 60,
+        bottom: 60,
+      };
+      
+      var innerWidth = w - margin.left - margin.right;
+      var innerHeight = h - margin.top - margin.bottom;
+      
+      var currentdata =[ {'key': 16, 'detail': '2016', 'value': 336485},
+      {'key': 17, 'detail': '2017', 'value': 337826}, 
+      {'key': 18, 'detail': '2018', 'value': 323076}, 
+      {'key': 19, 'detail': '2019', 'value': 303657}, 
+      {'key': 20, 'detail': '2020', 'value': 250220}]
+      
+      var hidedata = [{'key': 00, 'detail': '2000', 'value':423593}, 
+      {'key': 01, 'detail': '2001', 'value': 357386}, 
+      {'key': 02, 'detail': '2002', 'value':374396}, 
+      {'key': 03, 'detail': '2003', 'value':395496}, 
+      {'key': 04, 'detail': '2004', 'value':405050}, 
+      {'key': 05, 'detail': '2005', 'value':398592}, 
+      {'key': 06, 'detail': '2006', 'value':386915}, 
+      {'key': 07, 'detail': '2007', 'value':374992}, 
+      {'key': 08, 'detail': '2008', 'value':380722}, 
+      {'key': 09, 'detail': '2009', 'value':402126}, 
+      {'key': 10, 'detail': '2010', 'value':382989}, 
+      {'key': 11, 'detail': '2011', 'value':384846}, 
+      {'key': 12, 'detail': '2012', 'value':374472}, 
+      {'key': 13, 'detail': '2013', 'value':371855}, 
+      {'key': 14, 'detail': '2014', 'value':368964}, 
+      {'key': 15, 'detail': '2015', 'value':355784}]
+      
+      
+      var xScale = d3.scaleBand()
+      .domain(currentdata.map(d => d.detail))
+      .range([0, innerWidth])
+      .paddingInner(.1);
+
+      var yScale = d3.scaleLinear()
+      .domain([0, d3.max(currentdata.map(d => d.value))])
+      .range([innerHeight, 0]);
+      
+      var xAxis = d3.axisBottom()
+      .scale(xScale);
+      
+      var yAxis = d3.axisLeft()
+      .scale(yScale);
+      
+    
+     svg.append('text')
+        .attr('x', 50 + innerWidth / 2)
+        .attr('y', 30)
+        .style('text-anchor', 'middle')
+        .attr('class', 'axis-label')
+        .text(
+          'TAP Amount Given by Each Year'
+        );
+
+      
+      var bars = svg.append("g")
+      .attr("id", "plot")
+      .attr("transform", `translate (${margin.left}, ${margin.top})`)
+      .selectAll("rect")
+      .data(currentdata, d => d);
+      
+      bars.enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", d => xScale(d.detail))
+      .attr("y", d => yScale(d.value))
+      .attr("width", xScale.bandwidth())
+      .attr("height", d => innerHeight - yScale(d.value))
+      .attr("fill","slateblue");
+      
+      svg.append("g")
+      .attr("class", "xAxis")
+      .attr("transform", `translate (${margin.left}, ${h - margin.bottom})`)
+      .call(xAxis) .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
+      
+      svg.append("g")
+      .attr("class", "yAxis")
+      .attr("transform", `translate (${margin.left}, ${margin.top})`)
+      .call(yAxis);
+
+//update
+
+  function update(data) {
+
+    xScale.domain(data.map(d => d.detail));
+
+    yScale.domain([0, d3.max(data.map(d => d.value))]);
+
+    var bars = svg.select("#plot")
+        .selectAll("rect")
+        .data(data, d => d.key);
+
+    bars.enter().append("rect")
+      .attr("x", d => xScale(d.detail))
+      .attr("y", d => innerHeight)
+      .attr("width", xScale.bandwidth())
+      .attr("height", d => 0)
+      .attr("fill", "pink")
+      .merge(bars)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeLinear)
+      .attr("x", d => xScale(d.detail))
+      .attr("y", d => yScale(d.value))
+      .attr("width", xScale.bandwidth())
+      .attr("height", d => innerHeight - yScale(d.value))
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr("fill", "teal");
+
+    bars.exit()
+      .transition()
+      .duration(1500)
+      .ease(d3.easeLinear)
+      .attr("x", w*(1.1))
+      .remove();
+
+    svg.select(".xAxis")
+      .transition()
+      .duration(1500)
+      .ease(d3.easeLinear)
+      .call(xAxis)
+      .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
+
+    svg.select(".yAxis")
+      .transition()
+      .duration(1600)
+      .ease(d3.easeLinear)
+      .call(yAxis);
+
+  }
+
+    function add() {
+      var newvalue = hidedata[hidedata.length - 1];
+      if(hidedata.length !== 0)
+      {
+      hidedata.pop();
+      currentdata.unshift(newvalue);
+      update(currentdata);
+      };
+    }
+
+    function remove() {
+        var lastvalue = currentdata[0];
+        if(currentdata.length !==0){
+        currentdata.shift();
+        hidedata.push(lastvalue);
+        update(currentdata);
+        }
+      };
+    
+      </script>
+  </body>
+</html>
