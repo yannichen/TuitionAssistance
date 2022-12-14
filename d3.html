@@ -81,6 +81,23 @@
           'TAP Amount Given by Each Year'
         );
 
+      svg.append('text')
+        .attr('x', 100 + innerWidth)
+        .attr('y', 90 + innerHeight)
+        .style('text-anchor', 'end')
+        .attr('class', 'axis-label')
+        .text(
+          'Year'
+        );
+      
+      svg.append('text')
+        .attr('x', 90 )
+        .attr('y', 60)
+        .style('text-anchor', 'end')
+        .attr('class', 'axis-label')
+        .text(
+          '$Amount'
+        );
       
       var bars = svg.append("g")
       .attr("id", "plot")
