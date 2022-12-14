@@ -15,7 +15,11 @@ Since TAP is New York's largest student financial aid grant program, we focus so
 
 ## Question
 
-1. How does the Tuition Assistance Program (TAP) distribute its financial aid? For example, does being in a specific level of study, sector group, or income range result in receiving more financial aid than others?
+How does the Tuition Assistance Program (TAP) distribute its financial aid? 
 
-2. Does Covid-19 affect the distribution pattern or distributed amount of the TAP financial aid?
+1) Which feature group, based on both academic and non academic backgrounds, has more recipient?
+
+2) Does being in a specific feature group results in receiving more financial aid?
+
+
 
