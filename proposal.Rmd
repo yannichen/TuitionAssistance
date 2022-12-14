@@ -4,7 +4,7 @@
 
 Education is important. From the society’s perspective, more people attending higher education can create a better workforce that boosts the economy and more educated citizens that together create a better society. From the individual’s perspective, higher education means more opportunity and more knowledge for personal growth. However, not all family can afford the tuition needed, and many may lose the chance due to poverty. In order to support those families, state organization such as the Higher Education Service Corporation was created to centrally administer student financial aid programs, and the Tuition Assistance Program (TAP) is one of them.
 
-So, the question was proposed - `How does the Tuition Assistance Program (TAP) distribute its financial aid?` In other words, we want to investigate the decision making process of the TAP program to see the important features that may affect the disposal of the financial aid and dollar amounts being provided. We also would like to check `whether there will be changes in distribution or total financial aid amount after the COVID pandemic`, specifically in the year 2019 and 2020, as compared to previous years.
+So, the question was proposed - `How does the Tuition Assistance Program (TAP) distribute its financial aid?` In other words, we want to investigate the decision making process of the TAP program to see the important features that may affect the disposal of the financial aid and dollar amounts being provided. Speficially, We would like to investigate  `which feature group, based on both academic and non academic backgrounds, has more recipient` and `does being in a specific feature group results in receiving more financial aid`. 
 
 ## Data availability
 
