@@ -112,7 +112,12 @@
 <li class="chapter" data-level="5.1" data-path="interactive-component.html"><a href="interactive-component.html#explanation"><i class="fa fa-check"></i><b>5.1</b> Explanation</a></li>
 <li class="chapter" data-level="5.2" data-path="interactive-component.html"><a href="interactive-component.html#interactive"><i class="fa fa-check"></i><b>5.2</b> Interactive</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="conclusion.html"><a href="conclusion.html#main-takeaway"><i class="fa fa-check"></i><b>6.1</b> Main Takeaway</a></li>
+<li class="chapter" data-level="6.2" data-path="conclusion.html"><a href="conclusion.html#limitation"><i class="fa fa-check"></i><b>6.2</b> Limitation</a></li>
+<li class="chapter" data-level="6.3" data-path="conclusion.html"><a href="conclusion.html#future-work"><i class="fa fa-check"></i><b>6.3</b> Future Work</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -134,7 +139,23 @@
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Conclusion<a href="conclusion.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="main-takeaway" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Main Takeaway<a href="conclusion.html#main-takeaway" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Based on our exploratory data analysis and visualizations, we can now answer our research questions. That is, (1) which feature group has more recipients and (2) does being in a specific feature group results in receiving more financial aid than others.</p>
+<p>For the first question, most of the recipients are in undergraduate level compared to graduate level, and most of the recipients are in a degree program compared to a non-degree program. There are a large number of recipients who are under age 22 attending a public institution with income below $10,000. There are also a large number of recipients attending a 4 year or 2 year undergraduate degree program and are financially dependent. Towards recent years, more and more recipients are students in a 4 or 2 year undergraduate program. The TAP program stop giving financial aid to graduate student since 2010. As for school sector, independent colleges, CUNY Senior Colleges, and SUNY State Operated are the three sector groups that contain the most recipients. There is also a trend of having more recipients who are considered as studying in public institutions throughout the years. As for the award schedule letter, though there are more variations around 2000, up to 2020, the majority of recipients fall into schedule letter E, which is a schedule for students who are dependent on their parents, or who qualify as an orphan, foster child or ward of the court, or who are financially independent and are married and have tax dependents, or who are financially independent, are single and have tax dependents at Degree-Granting Institutions or Not-For-Profit Registered Business Schools. It is applicable to first-time recipients in the 2000-2001 school year and thereafter. Specifically, recipients who fall in this schedule can get a minimum award of $500 and a maximum award of $5,165 or tuition whichever is less.</p>
+<p>For the second question, we can see that overall, TAP generally distributes its budgets at about $700, $3,000, and $5,000. However, after filtering by year, we can see that the $3,000 grant is more often distributed from 2000 to 2010, whereas for the past 10 years, grants are more often distribution at around $700 and $5,000. Though some individual grant amount seems to be large, both total grant and total recipients for the TAP program are decreasing in recent years. Specifically, recipients attending in private school generally receive higher grants than those in public school, as their tuition are generally higher. Recipients who have lower income also tends to receive larger amount of grants. As for level of study, recipients in undergraduate programs tends to receive more than STAP and graduate students, and a longer undergraduate program generally result in larger grant amount. Age can be a determining factor in grant amount, but different level of study can lead to different trend. Specifically, recipients under age 22 receive less for their undergraduate study than other age group, except when they are in a 5 year undergraduate program.</p>
+<p>To sum up, if a recipient is financial dependent, has a very low income, and is pursuing in a long period undergraduate degree program at a private institution, he or she is more likely to receive a larger amount of grant compared to other recipients.</p>
+</div>
+<div id="limitation" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Limitation<a href="conclusion.html#limitation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Although our analysis consists of recipient portraits and grant distribution strategy, there are further limitations with respect to the incompleteness of the dataset. Since we only have the data for TAP recipients, we are missing that of all TAP applicants. Without the whole picture, we can only gain inspects on the characteristics of the successful applicants. The data for all applicants would enable us to identify potential factors of the unsuccessful applicants. Comparing them with the successful ones, we will have a more comprehensive understanding of determining factors of TAP application.</p>
+<p>Limitation on location is another issue that might lead to incomplete analysis. TAP is a tuition assistance program specifically aimed for New York State students. If more locations are supported, we could have a better understanding of demand and supply situations among different areas.</p>
+</div>
+<div id="future-work" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Future Work<a href="conclusion.html#future-work" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The next step we can take maybe using what we have found to build a machine learning model, helping students to predict the amount they can get using their academic and non-academic background information. However, to make the model more accurate, as the limitation part states, we may need to have more applicants information to classify whether the student can get TAP financial aid and then predict the amount, otherwise, the model might be biased.</p>
 
+</div>
 </div>
             </section>
 

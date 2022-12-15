@@ -28,3 +28,6 @@ interactive-component
 explanation
 interactive
 conclusion
+main-takeaway
+limitation
+future-work
