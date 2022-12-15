@@ -1,7 +1,7 @@
 # Interactive component
 
 
-## Explaination
+## Explanation
 In this section, one can see the TAP financial aid amount in dollars given by different year. The graph assumes one wants to see the recent 5 years data of the TAP total amount distributed. However, by clicking the "add more" data button, the data one the last unshown year will show up. On the other hands, one can easily remove the oldest year's data by clicking the remove botton.  
 
 ## Interactive
